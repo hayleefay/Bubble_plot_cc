@@ -6,14 +6,14 @@ from os import path
 from bokeh.plotting import figure
 #use Bokeh server
 from bokeh.io import curdoc
-from bokeh.models import ColumnDataSource
+from bokeh.models import ColumnDataSource, Title
 from bokeh.models.widgets import Select, Panel, Tabs
 from bokeh.models import HoverTool, WheelZoomTool, ResetTool, SaveTool
 from bokeh.models import NumeralTickFormatter
 from bokeh.layouts import layout
 
 #import styles
-from styles import (PLOT_FORMATS, RED, BLUE)
+from styles import (PLOT_FORMATS, TITLE_FORMATS, RED, BLUE)
 
 #load data as DataFrame
 df = pd.read_csv("resources/by_asset_bonus_phaseout.csv")
@@ -81,6 +81,7 @@ p = figure(plot_height=540,
            background_fill_alpha=0,
            # change things on all axes
            **PLOT_FORMATS)
+p.add_layout(Title(**TITLE_FORMATS))
 
 hover = p.select(dict(type=HoverTool))
 hover.tooltips = [('Asset', ' @Asset (@hover)')]
@@ -138,7 +139,7 @@ p2 = figure(plot_height=540,
             tools='hover',
             background_fill_alpha=0,
             **PLOT_FORMATS)
-
+p2.add_layout(Title(**TITLE_FORMATS))
 
 hover = p2.select(dict(type=HoverTool))
 hover.tooltips = [('Asset', ' @Asset (@hover)')]

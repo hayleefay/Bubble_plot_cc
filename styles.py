@@ -44,16 +44,20 @@ AXIS_FORMATS = dict(
 PLOT_FORMATS = dict(
     toolbar_location=None,
     outline_line_color="#FFFFFF",
-    title_text_font=FONT,
-    title_text_align='center',
-    title_text_color=DARK_GRAY,
-    title_text_font_size="9pt",
-    title_text_baseline='bottom',
     min_border_left=0,
     min_border_right=10,
     min_border_top=5,
     min_border_bottom=0,
 )
+
+TITLE_FORMATS = dict(
+    text_font=FONT,
+    align='center',
+    text_color=DARK_GRAY,
+    text_font_size="9pt",
+    # text_baseline='bottom',
+)
+
 LINE_FORMATS = dict(
     line_cap='round',
     line_join='round',
