@@ -3,7 +3,7 @@ import pandas as pd
 from os import path
 
 #importing Bokeh libraries
-from bokeh.plotting import figure
+from bokeh.plotting import figure, show
 #use Bokeh server
 from bokeh.io import curdoc
 from bokeh.models import ColumnDataSource, Title
@@ -81,7 +81,7 @@ p = figure(plot_height=540,
            background_fill_alpha=0,
            # change things on all axes
            **PLOT_FORMATS)
-p.add_layout(Title(**TITLE_FORMATS))
+p.add_layout(Title(text='Marginal Effective Tax Rates on Corporate Investments in Equipment', **TITLE_FORMATS),"above")
 
 hover = p.select(dict(type=HoverTool))
 hover.tooltips = [('Asset', ' @Asset (@hover)')]
@@ -139,7 +139,7 @@ p2 = figure(plot_height=540,
             tools='hover',
             background_fill_alpha=0,
             **PLOT_FORMATS)
-p2.add_layout(Title(**TITLE_FORMATS))
+p2.add_layout(Title(text='Marginal Effective Tax Rates on Corporate Investments in Structures', **TITLE_FORMATS),"above")
 
 hover = p2.select(dict(type=HoverTool))
 hover.tooltips = [('Asset', ' @Asset (@hover)')]
@@ -193,4 +193,5 @@ tab2 = Panel(child=p2, title='Structures')
 tabs = Tabs(tabs=[tab, tab2])
 
 #create layout and add to curdoc
-curdoc().add_root(tabs)
+# curdoc().add_root(tabs)
+show(tabs)
